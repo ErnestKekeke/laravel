@@ -76,6 +76,14 @@ class MfaMailController extends Controller
                 ]);
 
             } catch (Exception $e) {
+                cache()->forget('otp_'.$email);
+                cache()->forget('fullname');
+                cache()->forget('email');
+                cache()->forget('phone');
+                cache()->forget('userid');
+                cache()->forget('company');
+                cache()->forget('password');
+                
                 Log::error('Mail failed: ' . $e->getMessage());
                 // return "Email sending failed!";
                 // return "Email sending failed!" . $e->getMessage();

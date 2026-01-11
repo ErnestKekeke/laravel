@@ -18,6 +18,8 @@ Route::post('/send-mail', function(Request $request){
 })->name('send-mail');
 
 
+
+
 Route::get('/', function(){
     return view('home'); 
 

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     @include('layouts.meta')
-    @vite('resources/css/home.css')
+    @vite('resources/css/reset.css')
+    @vite('resources/css/admin.css')
 </head>
 <body>
 
@@ -37,6 +38,7 @@
                 username: <b>{{ $user->name }}</b>, 
                 email: <b>{{ $user->email }}</b>, 
                 userID: <b>{{ $user->userid }}</b>, 
+                Phone No: <b>{{ $user->phone }}</b>, 
                 company: <b>{{ ucfirst($user->company) }}</b>
             </p>
 

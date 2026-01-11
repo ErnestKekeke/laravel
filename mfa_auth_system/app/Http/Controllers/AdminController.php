@@ -62,7 +62,13 @@ class AdminController extends Controller
     public function delete($email){
         $user = User::where('email', $email)->first();
         if($user === null) return redirect('/admin')->with(["error"=>"email or userid, found in the database"]);
-        return $user->email . " delete successfully";
+        $user->delete();
+        $users = User::all();
+        session(['admin_users' => $users]);
+
+        // return $user->email . " was delete successfully";
+        return redirect('/admin')->with(["info"=>$user->email . " was delete successfully"]);
+        // return $user->email . " delete successfully";
     }
 
 

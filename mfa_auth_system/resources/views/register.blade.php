@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     @include('layouts.meta')
+    @vite('resources/css/reset.css')
+    @vite('resources/css/register.css')
 </head>
 <body>
     <header>
@@ -26,7 +28,7 @@
             @else
                 {{-- <p>email not yet ! from session</p> --}}
                             {{-- registraion start line.............................  --}}
-                <h2>Register here </h2>
+                <h3>Register here </h3>
                     @if(request()->has('error'))
                         <div style="color: red">
                             {{ ucfirst(str_replace('_', ' ', request()->get('error'))) }}
@@ -35,15 +37,15 @@
 
                     <form id="register-form" action="{{ route('register.user') }}" method="POST">
                         @csrf
-                        <label for="firstname">First Name</label><br>
+                        <label for="firstname">Firstname</label><br>
                         <input type="text" name="firstname" value="{{ old('firstname') }}">
                         @error('firstname')<span>{{ $message }}</span>@enderror <br><br>
 
-                        <label>Last Name</label><br>
+                        <label>Lastname</label><br>
                         <input type="text" name="lastname" value="{{ old('lastname') }}">
                         @error('lastname')<span>{{ $message }}</span>@enderror <br><br>
 
-                        <label>Phone Number</label> (optional)<br>
+                        <label>Phone no</label><br>
                         <input type="tel" name="phone" value="{{ old('phone') }}">
                         @error('phone')<span>{{ $message }}</span>@enderror <br><br>
 
@@ -80,11 +82,13 @@
                         @error('agree')<span>{{ $message }}</span> @enderror <br>
 
                         <button type="submit">Register</button>
-                    </form>
+                    </form><br>
                 {{-- registraion line ends .............................  --}}  
             @endif
 
-            Already have an account? <a href="{{ route('home') }}">Login here</a>
+            <div>
+                Already have an account? <a href="{{ route('home') }}">Login here</a>
+            </div>
         @endauth
     </main>
     

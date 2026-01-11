@@ -1,65 +1,81 @@
 let pdnm = document.getElementById("pdnm");
 pdnm.style.visibility = "hidden";
 
-
-
 let pwd = document.getElementById("pwd");
 let comPwd = document.getElementById("com-pwd");
 
+// Function to validate passwords and update UI
+function validatePasswords() {
+    let pwdValue = pwd.value.trim();
+    let comPwdValue = comPwd.value.trim();
 
-pwd.addEventListener("keyup", () => {
-    pwd.value = pwd.value.trim();
-    comPwd.value = comPwd.value.trim();
+    // Update trimmed values
+    pwd.value = pwdValue;
+    comPwd.value = comPwdValue;
 
-    // pwd.value === comPwd.value? console.log("Passwords match") : console.log("Passwords do not match");
-    if(pwd.value !== comPwd.value){
-        pdnm.innerHTML = "password do not match"
+    // Reset classes
+    pwd.classList.remove('error', 'success');
+    comPwd.classList.remove('error', 'success');
+
+    // Check if passwords don't match
+    if (pwdValue !== comPwdValue && comPwdValue.length > 0) {
+        pdnm.innerHTML = "password do not match";
         pdnm.style.cssText = "visibility: visible; color: red;";
-    }else if(pwd.value.length < 6 ){
-        pdnm.innerHTML = "password minimum of 6 character"
+        comPwd.classList.add('error');
+        if (pwdValue.length >= 6) {
+            pwd.classList.add('success');
+        }
+    } 
+    // Check if password is too short
+    else if (pwdValue.length > 0 && pwdValue.length < 6) {
+        pdnm.innerHTML = "password minimum of 6 characters";
         pdnm.style.cssText = "visibility: visible; color: red;";
-    }
-    else{
-        pdnm.innerHTML = "password match"
+        pwd.classList.add('error');
+        if (comPwdValue.length > 0) {
+            comPwd.classList.add('error');
+        }
+    } 
+    // Passwords match and meet requirements
+    else if (pwdValue === comPwdValue && pwdValue.length >= 6) {
+        pdnm.innerHTML = "password match";
         pdnm.style.cssText = "visibility: visible; color: green;";
+        pwd.classList.add('success');
+        comPwd.classList.add('success');
+    } 
+    // Hide message if fields are empty
+    else if (pwdValue.length === 0 && comPwdValue.length === 0) {
+        pdnm.style.visibility = "hidden";
     }
+}
 
-    console.log(pwd.value);
-});
+pwd.addEventListener("keyup", validatePasswords);
+comPwd.addEventListener("keyup", validatePasswords);
 
-
-comPwd.addEventListener("keyup", () => {
-    pwd.value = pwd.value.trim();
-    comPwd.value = comPwd.value.trim();
-
-    // pwd.value === comPwd.value? console.log("Passwords match") : console.log("Passwords do not match");
-    if(pwd.value !== comPwd.value){
-        pdnm.innerHTML = "password do not match"
-        pdnm.style.cssText = "visibility: visible; color: red;";
-    }else if(pwd.value.length < 6 ){
-        pdnm.innerHTML = "password minimum of 6 character"
-        pdnm.style.cssText = "visibility: visible; color: red;";
-    }
-    else{
-        pdnm.innerHTML = "password match"
-        pdnm.style.cssText = "visibility: visible; color: green;";
-    }
-
-    console.log(comPwd.value);
-});
-
-
-
-
-
-let registerForm =  document.getElementById("register-form");
+// Form submission validation
+let registerForm = document.getElementById("register-form");
 let chkAgree = document.getElementById("chk-agree");
 
-registerForm.addEventListener("submit", (e)=>{
-    console.log(chkAgree.checked);
-    if(!chkAgree.checked){
-        window.alert("You need to accept terms and agreement !");
+registerForm.addEventListener("submit", (e) => {
+    // Check if terms are agreed
+    if (!chkAgree.checked) {
+        alert("You need to accept the Terms and Conditions!");
         e.preventDefault();
+        return;
     }
-  
-})
+
+    // Check if passwords match and meet requirements
+    let pwdValue = pwd.value.trim();
+    let comPwdValue = comPwd.value.trim();
+
+    if (pwdValue !== comPwdValue) {
+        alert("Passwords do not match!");
+        e.preventDefault();
+        return;
+    }
+
+    if (pwdValue.length < 6) {
+        alert("Password must be at least 6 characters!");
+        e.preventDefault();
+        return;
+    }
+});

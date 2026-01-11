@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('layouts.meta')
+    @vite('resources/css/reset.css')
     @vite('resources/css/home.css')
 </head>
 <body>
@@ -13,10 +14,8 @@
         <p style="color: red">{{ session('error') }}</p>
     @endif
 
+    <h3>GLORIA MFA AUTH</h3>
 
-    <h2>Hello World</h2>
-    
-    
     <main>
 
         @auth
