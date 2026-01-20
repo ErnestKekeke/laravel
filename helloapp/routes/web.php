@@ -16,11 +16,11 @@ Route::get('/', function () {
 // });
 
 
-Route::get('/book', function(){
-    $post = Post::create([
-    'title' => 'Chapter 1',
-    'content' => 'Post content here...',
-    'book_id' => 2,
-        ]);
+// Route::get('/book', function(){
+//     $post = Post::create([
+//     'title' => 'Chapter 1',
+//     'content' => 'Post content here...',
+//     'book_id' => 2,
+//         ]);
 
-});
+// });

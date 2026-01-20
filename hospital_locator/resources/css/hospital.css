@@ -1,0 +1,366 @@
+/* public/css/hospital.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 0;
+    color: #333;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c5aa0;
+}
+
+.nav-icon {
+    font-size: 28px;
+}
+
+.nav-title {
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3a70 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(44, 90, 160, 0.3);
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.4);
+    background: linear-gradient(135deg, #3d6bc0 0%, #2a4a8a 100%);
+}
+
+.link-icon {
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3a70 100%);
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    border: 3px solid white;
+}
+
+.header-info h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.hospital-type {
+    font-size: 16px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 0;
+}
+
+.details-section {
+    padding: 30px;
+}
+
+.map-section {
+    background: #f8f9fa;
+    padding: 30px;
+    border-left: 1px solid #e0e0e0;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.section h2 {
+    color: #2c5aa0;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.section h2::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: #667eea;
+    margin-right: 12px;
+    border-radius: 2px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.label {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.value {
+    font-size: 16px;
+    color: #222;
+    font-weight: 400;
+}
+
+.value a {
+    color: #2c5aa0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.value a:hover {
+    color: #667eea;
+    text-decoration: underline;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge.accredited {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.map-section h2 {
+    color: #2c5aa0;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#map {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.map-info {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.map-info p {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.map-info .small-text {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+@media (max-width: 968px) {
+    .nav-container {
+        padding: 15px 20px;
+    }
+
+    .nav-brand {
+        font-size: 18px;
+    }
+
+    .nav-icon {
+        font-size: 24px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-link {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    .link-icon {
+        font-size: 14px;
+    }
+
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .map-section {
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    #map {
+        height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .nav-link {
+        width: 100%;
+        justify-content: center;
+    }
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .header-info h1 {
+        font-size: 24px;
+    }
+
+    .details-section,
+    .map-section {
+        padding: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
