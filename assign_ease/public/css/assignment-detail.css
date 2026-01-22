@@ -1,0 +1,170 @@
+/* Page Header */
+.page-header {
+    margin-bottom: 30px;
+}
+
+.back-link {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #2980b9;
+}
+
+.page-header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+/* Assignment Detail */
+.assignment-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+/* Info Rows */
+.info-row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    flex: 0 0 180px;
+    font-weight: 600;
+    color: #7f8c8d;
+}
+
+.info-value {
+    flex: 1;
+    color: #2c3e50;
+}
+
+.info-value.overdue {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Description */
+.description-text {
+    color: #2c3e50;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+/* Submission Card */
+.submission-card .card-header {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.score-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.feedback-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.feedback-section h4 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.feedback-section p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Submit Card */
+.submit-card .card-header {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.submit-form {
+    max-width: 600px;
+}
+
+.submit-form .form-group {
+    margin-bottom: 20px;
+}
+
+.submit-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.submit-form input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 2px dashed #dcdde1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-form input[type="file"]:hover {
+    border-color: #3498db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .info-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .info-label {
+        flex: auto;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.2rem;
+    }
+}

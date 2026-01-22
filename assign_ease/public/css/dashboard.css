@@ -1,0 +1,246 @@
+/* Dashboard Header */
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #3498db;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Dashboard Actions */
+.dashboard-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+/* Content Section */
+.dashboard-content {
+    display: grid;
+    gap: 30px;
+}
+
+.content-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.section-header h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.view-all {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.view-all:hover {
+    color: #2980b9;
+}
+
+/* Assignment List */
+.assignments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.assignment-item {
+    padding: 20px;
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.assignment-item:hover {
+    border-color: #3498db;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.2);
+}
+
+.assignment-info h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.course-info {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.lecturer-info {
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+.assignment-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.due-date {
+    font-size: 0.9rem;
+}
+
+.due-date .label {
+    color: #7f8c8d;
+}
+
+.due-date .value {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.due-date .relative {
+    display: block;
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+.due-date.urgent .value {
+    color: #e74c3c;
+}
+
+.submissions-count {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.submissions-count .count {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.submissions-count .label {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Submissions List */
+.submissions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.submission-item {
+    padding: 15px;
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submission-info h4 {
+    color: #2c3e50;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.assignment-title {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.submission-date {
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+.submission-status {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .assignment-item,
+    .submission-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .assignment-meta,
+    .submission-status {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+}
