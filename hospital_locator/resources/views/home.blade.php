@@ -79,13 +79,14 @@
         <div class="container">
             <h2 class="section-title">Find a Hospital Near You</h2>
             <p class="section-subtitle">Explore hospitals on the interactive map below</p>
-            <div id="map" class="map-container"></div>
         </div>
     </section>
 
-    <!-- Search & Info Section -->
+    <!-- Search & Map Side by Side Section -->
     <section class="search-section">
         <div class="container">
+            <div id="map" class="map-container"></div>
+            
             <div class="search-card">
                 <h2 class="search-title">Search Hospital Details</h2>
                 <p class="search-subtitle">Find a trusted hospital and discover more details</p>
@@ -106,26 +107,23 @@
                         <div class="preview-header">
                             <img id="logo" class="preview-logo" src="{{ asset('images/default_logo.png') }}" alt="Hospital Logo"/>
                             <div class="preview-info">
-                                {{-- <h3 id="hospital-name" class="preview-name">Select a hospital</h3>
-                                <span id="accreditation" class="preview-badge">Not selected</span> --}}
+                                <h3 id="hospital-name" class="preview-name">Select a hospital</h3>
+                                {{-- <span id="accreditation" class="preview-badge">Not selected</span> --}}
                             </div>
                         </div>
                         
                         <address id="address" class="preview-address">
                             <div class="address-line">
                                 <span class="address-icon">📍</span>
-                                {{-- <span>123 Main Street, Springfield, IL 62704, USA</span> --}}
-                                 <span>NIL, NIL</span>
+                                <span>NIL, NIL</span>
                             </div>
                             <div class="address-line">
                                 <span class="address-icon">✉️</span>
-                                {{-- <a href="mailto:johndoe@example.com">johndoe@example.com</a> --}}
-                                <a href="">info@mail</a>
+                                <a href="">NIL</a>
                             </div>
                             <div class="address-line">
                                 <span class="address-icon">📞</span>
-                                {{-- <a href="tel:+11234567890">+1 (123) 456-7890</a> --}}
-                                <a href="">+1 000 000</a>
+                                <a href="">NIL</a>
                             </div>
                         </address>
                     </div>

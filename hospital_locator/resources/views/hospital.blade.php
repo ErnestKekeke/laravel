@@ -104,6 +104,10 @@
                             <span class="value">{{ $hospital->city }}</span>
                         </div>
                         <div class="info-item">
+                            <span class="label">Zip Code:</span>
+                            <span class="value">{{ $hospital->zipcode }}</span>
+                        </div>
+                        <div class="info-item">
                             <span class="label">State:</span>
                             <span class="value">{{ $hospital->state }}</span>
                         </div>

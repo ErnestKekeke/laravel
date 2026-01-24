@@ -27,6 +27,7 @@ class Hospital extends Model
         'country',
         'state',
         'city',
+        'zipcode',
         'latitude',
         'longitude',
         'logo_path', // updated

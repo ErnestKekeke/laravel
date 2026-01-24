@@ -288,6 +288,15 @@
                             </select>
                             @error('city')<span class="error-message">{{ $message }}</span>@enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="zip_code" class="form-label">
+                                Zip/Postal Code <span class="required">*</span>
+                            </label>
+                            <input type="text" id="zip_code" name="zip_code" class="form-input" 
+                                value="{{ old('zip_code') }}" required placeholder="Enter zip/postal code">
+                            @error('zip_code')<span class="error-message">{{ $message }}</span>@enderror
+                        </div>
                     </div>
                 </div>
 

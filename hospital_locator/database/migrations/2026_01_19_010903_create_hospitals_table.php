@@ -46,6 +46,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('state');
             $table->string('city');
+            $table->string('zipcode'); // ✅ added zipcode
 
             // Location
             $table->decimal('latitude', 10, 7)->nullable();

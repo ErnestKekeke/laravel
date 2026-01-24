@@ -79,6 +79,7 @@ class HospitalController extends Controller
             'country'           => 'required|string|min:2|max:50',
             'state'             => 'required|string|min:2|max:50',
             'city'              => 'required|string|min:2|max:50',
+            'zip_code'          => 'required|string|min:3|max:15',
             'latitude'          => ['required', 'regex:/^(\+|-)?(?:90(?:\.0+)?|[0-8]?\d(?:\.\d+)?)$/'],
             'longitude'         => ['required', 'regex:/^(\+|-)?(?:180(?:\.0+)?|1[0-7]\d(?:\.\d+)?|0?\d{1,2}(?:\.\d+)?)$/'],
         ]);
@@ -90,6 +91,7 @@ class HospitalController extends Controller
         $email        = CheckController::email(strtolower(trim(strip_tags($request->email))));
         $contactNo    = CheckController::tel(trim(strip_tags($request->contact_no)));
         $address      = trim(strip_tags($request->address));
+        $zipCode      = CheckController::zipcode(trim(strip_tags($request->zip_code)));
         $beds         = CheckController::bed(trim($request->beds));
         $latitude     = CheckController::latitude(trim($request->latitude));
         $longitude    = CheckController::longitude(trim($request->longitude));
@@ -100,6 +102,7 @@ class HospitalController extends Controller
         if (!$email) return back()->with('error', 'Invalid: Email');
         if (!$contactNo) return back()->with('error', 'Invalid: Contact Number');
         if (!$address) return back()->with('error', 'Invalid: Address');
+        if (!$zipCode) return back()->with('error', 'Invalid: Zip-Code');
         if ($beds === false) return back()->with('error', 'Invalid: Number of Beds');
         if ($latitude === false) return back()->with('error', 'Invalid: Latitude');
         if ($longitude === false) return back()->with('error', 'Invalid: Longitude');
@@ -132,6 +135,7 @@ class HospitalController extends Controller
             'country'              => $request->country,
             'state'                => $request->state,
             'city'                 => $request->city,
+            'zipcode'              => $request->zip_code,
             
             'latitude'             => $latitude,
             'longitude'            => $longitude,
@@ -158,6 +162,7 @@ class HospitalController extends Controller
                 'country'       => $request->country,
                 'state'         => $request->state,
                 'city'          => $request->city,
+                'zipcode'       => $request->zip_code,
                 'latitude'      => $latitude,
                 'longitude'     => $longitude,
                 'logo_path'     => $logoPath, // updated field

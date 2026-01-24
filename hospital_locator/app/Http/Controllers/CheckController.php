@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CheckController extends Controller
 {
     public static function name($input): mixed{
-        $regx = "/^[\w \' ]{3,100}$/";
+        $regx = "/^[A-Za-z\.\' ]{3,100}$/";
         $test = preg_match($regx, $input);
         return $test? $input : null;
     }
@@ -26,6 +26,12 @@ class CheckController extends Controller
 
     public static function address($input): mixed{
         $regx = "/^[A-Za-z0-9\s,.\/-]{5,50}$/";
+        $test = preg_match($regx, $input);
+        return $test? $input : null;
+    }
+
+    public static function zipcode($input): mixed{
+        $regx = "/^[A-Za-z0-9\- ]{3,15}$/";
         $test = preg_match($regx, $input);
         return $test? $input : null;
     }
