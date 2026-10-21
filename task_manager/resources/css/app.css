@@ -1,0 +1,194 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+:root {
+  /* --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --text-color: #333333;
+  --background-color: #ffffff; */
+    --task-color-value0: #000;
+
+    --task-color-value1: #2471dd;
+    --task-color-value2: #20ba20;
+    --task-color-value3: #ac6d2f;
+
+    --task-color-value-1: #4e4c2f;
+}
+
+/* ..................... */
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer; /* Shows it's clickable */
+    transition: opacity 0.5s ease; /* Smooth fade effect */
+}
+
+.alert-success{
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger{
+    background-color: #f8d7da; 
+    color: #721c24;
+}
+/* ..................... */
+
+/* tasks css */
+.tasks{
+    margin: 10px 10%;
+    background-color: var(--task-color-value0);
+    padding: 10px;
+}
+
+
+.tasks[task_project_id="1"] {
+    background-color:  var(--task-color-value1);
+}
+
+.tasks[task_project_id="2"] {
+    background-color:  var(--task-color-value2);
+}
+
+.tasks[task_project_id="3"] {
+    background-color:  var(--task-color-value3);
+}
+
+.tasks[task_project_id="null"] {
+    background-color: var(--task-color-value-1);
+}
+
+.tasks p{
+    color: white
+}
+
+
+/* projects css */
+
+.projects{
+    margin: 10px 10%;
+    background-color:  aliceblue;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.projects .project{
+    font-weight: bold;
+}
+
+/* //  0: for all project */
+.projects option[value="0"] {
+    color: var(--task-color-value0);
+}
+
+.projects option[value="1"] {
+    color: var(--task-color-value1);
+}
+
+.projects option[value="2"] {
+    color: var(--task-color-value2);
+}
+
+.projects option[value="3"] {
+    color: var(--task-color-value3);
+}
+
+/* //  -1: for un-assigned */
+.projects option[value="-1"] {
+    color: var(--task-color-value-1);
+}
+
+
+
+/* Base button styles */
+.btn {
+    display: inline-block;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Create Task Button (Green) */
+.btn-create, .btn-update{
+    padding: 7px 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-create {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.btn-create:hover {
+    background-color: #218838;
+}
+
+/* Update Task Button (Blue) */
+.btn-update {
+    background-color: #007bff;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;
+}
+
+/* Update Task Delete (Blue) */
+.btn-delete {
+    padding: 3px 10px;
+    font-weight: 600;
+    font-size: 10px;
+    background-color: #ee4f4f;
+    color: #ffffff;
+}
+
+
+/* Edit Task Button (Neutral/Gray or Slate) */
+.btn-edit {
+    padding: 3px 10px;
+    font-weight: 600;
+    font-size: 10px;
+    background-color: #6c757d;
+    color: #ffffff;
+    text-decoration: none; /* Removes underline from the <a> tag */
+}
+
+.btn-edit:hover {
+    background-color: #c3c4c5;
+    color: black;
+}
+
+/* Delete Task Button (Red) */
+.btn-delete {
+    margin: 0 10px;
+    padding: 3px 10px;
+    font-weight: 600;
+    font-size: 10px;
+    background-color: #ee4f4f;
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background-color: #f19a9a;
+    color: black;
+}
+
+/* //............ */
+.spacer{
+    height: 100px;
+}

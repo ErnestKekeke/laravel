@@ -1,0 +1,63 @@
+# Docker Compose file version
+version: '3.8'
+
+# Define the services (containers) used in this project
+services:
+
+  # PHP + Apache web server
+  web:
+    # Build the image using the Dockerfile in the current folder
+    build: .
+
+    # Name of the container (easier to manage with docker commands)
+    container_name: php_web
+
+    # Map port 8080 on the host machine to port 80 in the container
+    # Access the website via http://localhost:8080
+    ports:
+      - "8080:80"
+
+    # Mount local folder ./src into the container web root
+    # This allows live editing of PHP files without rebuilding
+    volumes:
+      - ./src:/var/www/html
+
+    # Ensure the database container starts before the web container
+    depends_on:
+      - db
+
+
+  # MySQL database service
+  db:
+    # Use the official MySQL version 8 image from Docker Hub
+    image: mysql:8
+
+    # Custom container name
+    container_name: mysql_db
+
+    # Automatically restart container if it stops
+    restart: always
+
+    # Environment variables used to initialize MySQL
+    environment:
+      # Root (admin) password
+      MYSQL_ROOT_PASSWORD: root
+
+      # Database automatically created on startup
+      MYSQL_DATABASE: formdb
+
+      # Custom database user
+      MYSQL_USER: user
+
+      # Password for the custom user
+      MYSQL_PASSWORD: password
+
+    # Expose MySQL port so it can be accessed from host machine
+    # Example: MySQL client, DBeaver, TablePlus
+    ports:
+      - "3306:3306"
+
+    # Run SQL script when the database container is created
+    # Useful for creating tables automatically
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
