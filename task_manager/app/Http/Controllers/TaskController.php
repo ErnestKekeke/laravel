@@ -8,106 +8,106 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-
-    // Displays the list of tasks and projects.
+    // Display the list of tasks ordered by priority alongside available projects
     public function index()
     {
-        // Retrieves all tasks ordered by priority (so #1 is at the top).
         $tasks = Task::orderBy('priority', 'asc')->get();
-
-        // Retrieves all projects from the database.
         $projects = Project::all();
 
-        // Passes the tasks and projects to the index view.
         return view('tasks.index', compact('tasks', 'projects'));
     }
 
-
+    // Load the form with a new, empty Task instance for creation
     public function create()
     {
-        // Pass a brand new, empty Task instance
-        return view('tasks.edit_create', ['task' => new Task(),
-                                         'projects' => Project::all(),
-                                         ]);
+        return view('tasks.edit_create', [
+            'task' => new Task(),
+            'projects' => Project::all(),
+        ]);
     }
 
-    //........
+    // Validate and store a brand new task, auto-assigning it the next priority number
     public function store(Request $request)
     {
-        // Validate the incoming request data
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+                // This regex looks through the string and ensures there are at least 6 letters (a-z or A-Z)
+                'regex:/^(?=(?:[^a-zA-Z]*[a-zA-Z]){6,}).*$/'
+            ],
             'project_id' => 'nullable|exists:projects,id',
-        ]);
+        ], [
+            // Custom error message so it reads clearly for users
+            'name.regex' => 'The task name must contain at least 6 alphabetic letters.'
+        ]); 
 
-        // Automatically determine the next priority number for the new task
-        $maxPriority = Task::max('priority') ?? 0;
-        $validated['priority'] = $maxPriority + 1;
+        // Automatically place the new task at the bottom of the list
+        $validated['priority'] = (Task::max('priority') ?? 0) + 1;
 
-        // 3. Create the task using the validated data
         Task::create($validated);
 
         return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
 
-    // // show each task details Not In Used 
-    // public function show(Task $task){}
- 
-
-
+    // Load the form pre-filled with an existing task for editing
     public function edit(Task $task)
     {
-        // Pass the existing task fetched via Route Model Binding
-        return view('tasks.edit_create', ['task' => $task,
-                                         'projects' => Project::all(),
-                                         ]);
+        return view('tasks.edit_create', [
+            'task' => $task,
+            'projects' => Project::all(),
+        ]);
     }
 
-
-    //....................
+    // Validate and update an existing task
     public function update(Request $request, Task $task)
     {
-        // Validate the incoming request data
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+                // This regex looks through the string and ensures there are at least 6 letters (a-z or A-Z)
+                'regex:/^(?=(?:[^a-zA-Z]*[a-zA-Z]){6,}).*$/'
+            ],
             'project_id' => 'nullable|exists:projects,id',
+        ], [
+            // Custom error message so it reads clearly for users
+            'name.regex' => 'The task name must contain at least 6 alphabetic letters.'
         ]);
-
-        // Update the existing task
+        
         $task->update($validated);
 
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
 
-    // ............
+    // Delete a task and automatically shift up the priorities of remaining tasks
     public function destroy(Task $task)
     {
         $deletedPriority = $task->priority;
 
-        // Delete the task
         $task->delete();
 
-        // Shift down the priority of all tasks that came after the deleted one
+        // Shift up remaining task priorities to fill the gap
         Task::where('priority', '>', $deletedPriority)
             ->decrement('priority');
 
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
     }
 
-
-    // ..................
+    // Handle asynchronous drag-and-drop reordering from SortableJS
     public function reorder(Request $request)
     {
-        // Validate that 'tasks_ids' is present and is an array
         $request->validate([
             'tasks_ids' => 'required|array'
         ]);
 
-        // Loop through the array and update priority based on the new array index
         foreach ($request->input('tasks_ids') as $index => $task_id) {
-            // $index starts at 0, so priority becomes 1, 2, 3, etc.
             Task::where('id', $task_id)->update([
-                'priority' => $index + 1
+                'priority' => $index + 1  // Reassign based on new array order
             ]);
         }
 
@@ -116,8 +116,4 @@ class TaskController extends Controller
             'message' => 'Task priorities updated successfully!'
         ]);
     }
-
 }
-
-
-

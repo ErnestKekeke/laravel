@@ -1,194 +1,275 @@
-*, *::before, *::after{
+
+/* Reset & Global Base Styles */
+
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     text-decoration: none;
     box-sizing: border-box;
 }
 
-
 :root {
-  /* --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --text-color: #333333;
-  --background-color: #ffffff; */
-    --task-color-value0: #000;
-
-    --task-color-value1: #2471dd;
-    --task-color-value2: #20ba20;
-    --task-color-value3: #ac6d2f;
-
-    --task-color-value-1: #4e4c2f;
+    --task-color-value0: #1f2937;
+    --task-color-value1: #328fc8;
+    --task-color-value2: #68a316;
+    --task-color-value3: #d97706;
+    --task-color-value-1: #4b5563;
 }
 
-/* ..................... */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    font-family: Arial, sans-serif; 
+}
+
+
+/* App Shell Header & Footer Layout */
+
+.app-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 15px 30px;
+}
+
+.nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+    color: #2563eb;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 800px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: #9ca3af;
+    border-top: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+
+/* Flash Alerts Component */
+
 .alert {
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
     border: 1px solid transparent;
-    cursor: pointer; /* Shows it's clickable */
-    transition: opacity 0.5s ease; /* Smooth fade effect */
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+    font-size: 14px;
 }
 
-.alert-success{
-    background-color: #d4edda;
-    color: #155724;
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-color: #a7f3d0;
 }
 
-.alert-danger{
-    background-color: #f8d7da; 
-    color: #721c24;
+.alert-danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
 }
-/* ..................... */
 
-/* tasks css */
-.tasks{
-    margin: 10px 10%;
+.welcome-hero p, .hero-actions{
+    margin: 20px 0;
+}
+
+
+/* Tasks List & Dynamic Project Colors */
+
+.tasks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
     background-color: var(--task-color-value0);
+    padding: 12px 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: grab;
+}
+
+.tasks:active {
+    cursor: grabbing;
+}
+
+.tasks[task_project_id="1"] { background-color: var(--task-color-value1); }
+.tasks[task_project_id="2"] { background-color: var(--task-color-value2); }
+.tasks[task_project_id="3"] { background-color: var(--task-color-value3); }
+.tasks[task_project_id="null"] { background-color: var(--task-color-value-1); }
+
+.tasks p {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+
+/* Project Dropdown & Selectors */
+
+.projects {
+    width: 100%;
+    margin-top: 5px;
+    background-color: #ffffff;
+    font-weight: 500;
     padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
 }
 
-
-.tasks[task_project_id="1"] {
-    background-color:  var(--task-color-value1);
+.projects .project {
+    font-weight: 500;
 }
 
-.tasks[task_project_id="2"] {
-    background-color:  var(--task-color-value2);
-}
-
-.tasks[task_project_id="3"] {
-    background-color:  var(--task-color-value3);
-}
-
-.tasks[task_project_id="null"] {
-    background-color: var(--task-color-value-1);
-}
-
-.tasks p{
-    color: white
-}
+.projects option[value="0"] { color: var(--task-color-value0); }
+.projects option[value="1"] { color: var(--task-color-value1); }
+.projects option[value="2"] { color: var(--task-color-value2); }
+.projects option[value="3"] { color: var(--task-color-value3); }
+.projects option[value="-1"] { color: var(--task-color-value-1); }
 
 
-/* projects css */
+/* Unified Button Component Styles */
 
-.projects{
-    margin: 10px 10%;
-    background-color:  aliceblue;
-    font-weight: bold;
-    padding: 10px;
-}
-
-.projects .project{
-    font-weight: bold;
-}
-
-/* //  0: for all project */
-.projects option[value="0"] {
-    color: var(--task-color-value0);
-}
-
-.projects option[value="1"] {
-    color: var(--task-color-value1);
-}
-
-.projects option[value="2"] {
-    color: var(--task-color-value2);
-}
-
-.projects option[value="3"] {
-    color: var(--task-color-value3);
-}
-
-/* //  -1: for un-assigned */
-.projects option[value="-1"] {
-    color: var(--task-color-value-1);
-}
-
-
-
-/* Base button styles */
 .btn {
     display: inline-block;
     text-align: center;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn:active {
     transform: translateY(1px);
 }
 
-/* Create Task Button (Green) */
-.btn-create, .btn-update{
-    padding: 7px 12px;
+.btn-create, .btn-update {
+    padding: 8px 16px;
     font-weight: 600;
     font-size: 14px;
 }
 
 .btn-create {
-    background-color: #28a745;
+    background-color: #16a34a;
     color: #ffffff;
 }
 
 .btn-create:hover {
-    background-color: #218838;
+    background-color: #15803d;
 }
 
-/* Update Task Button (Blue) */
 .btn-update {
-    background-color: #007bff;
-    font-size: 14px;
+    background-color: #2563eb;
     color: #ffffff;
 }
 
 .btn-update:hover {
-    background-color: #0056b3;
+    background-color: #1d4ed8;
 }
 
-/* Update Task Delete (Blue) */
-.btn-delete {
-    padding: 3px 10px;
-    font-weight: 600;
-    font-size: 10px;
-    background-color: #ee4f4f;
-    color: #ffffff;
-}
-
-
-/* Edit Task Button (Neutral/Gray or Slate) */
 .btn-edit {
-    padding: 3px 10px;
+    padding: 4px 10px;
     font-weight: 600;
-    font-size: 10px;
-    background-color: #6c757d;
+    font-size: 11px;
+    background-color: #4b5563;
     color: #ffffff;
-    text-decoration: none; /* Removes underline from the <a> tag */
 }
 
 .btn-edit:hover {
-    background-color: #c3c4c5;
-    color: black;
+    background-color: #374151;
 }
 
-/* Delete Task Button (Red) */
 .btn-delete {
-    margin: 0 10px;
-    padding: 3px 10px;
+    padding: 4px 10px;
     font-weight: 600;
-    font-size: 10px;
-    background-color: #ee4f4f;
+    font-size: 11px;
+    background-color: #dc2626;
     color: #ffffff;
 }
 
 .btn-delete:hover {
-    background-color: #f19a9a;
-    color: black;
+    background-color: #b91c1c;
 }
 
-/* //............ */
-.spacer{
-    height: 100px;
+
+/* Form Cards & Utilities */
+
+.form-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.form-card h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.form-card > form > div{
+    margin-bottom: 20px;
+}
+
+.form-card > form > div > label{
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: 600;
+    opacity: 0.6;
+}
+
+.create-task{
+    margin-top: 20px;
+}
+
+.create-task > a{
+    color: #16a34a;
+}
+
+.create-task > a:hover{
+    color: #0c7a34;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+.spacer {
+    height: 50px;
 }

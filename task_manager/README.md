@@ -1,58 +1,148 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Task Manager Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, readable, and robust Task Management Web Application built with **Laravel 13** and **PHP 8.3**. Designed and implemented following clean Laravel conventions, this application provides full task lifecycle management, dynamic drag-and-drop task reordering, project filtering, and custom input validation.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Requirements & Features Compliance
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Task Management (CRUD):** Create, edit, update, and delete tasks seamlessly with persistent storage in MySQL.
+* **Drag-and-Drop Reordering:** Drag tasks in the browser using the local [`sortable.min.js`](https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js) library (see also [SortableJS Live Demos](https://sortablejs.github.io/Sortable/)) to adjust priorities in real-time (#1 priority at the top, #2 next down, etc.) via asynchronous AJAX updates.
+* **Smart Drag Guarding:** Built-in checks prevent unnecessary network requests and database updates if a task is clicked or dropped without a position change.
+* **Bonus Feature — Project Functionality:** Filter tasks dynamically by selecting a project from the dropdown list. The interface highlights matching project tasks while maintaining real-time updates.
+* **Input Validation:** Enforces clean input rules, requiring at least 6 alphabetic characters for task names (ignoring spaces and special characters).
+* **Self-Contained Asset Delivery:** Bundled with local JS assets for offline support, coupled with Laravel Vite for development and production build workflows.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Environment & Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This project strictly meets and exceeds the system requirements:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* **Framework:** Laravel `13.37.0` (Min. v11 requirement met)
+* **Language:** PHP `8.3.35` (Min. v8.3 requirement met)
+* **Package Manager:** Composer `2.9.2`
+* **Database:** MySQL
+* **Frontend:** Blade Templating, Vanilla JavaScript (ES6+), SortableJS, Vite
+* **Asset Bundling:** Vite / Local JavaScript Hosting
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## Project Structure Overview
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+```
+├── public/
+│   ├── js/
+│   │   └── Sortable.min.js              # Self-hosted SortableJS library
+│   ├── .htaccess
+│   ├── favicon.ico
+│   ├── fonts-manifest.dev.json
+│   └── index.php
+├── resources/
+│   ├── css/
+│   │   └── app.css                      # Custom application styling
+│   ├── js/
+│   │   └── app.js                       # Drag & drop logic & project filtering
+│   └── views/
+│       ├── layouts/
+│       │   └── app.blade.php            # Main application layout template
+│       └── tasks/
+│           ├── edit_create.blade.php    # Shared task creation & edit form view
+│           ├── index.blade.php          # Main task list & priority management view
+│           └── welcome.blade.php        # Welcome/landing page view
+└── routes/
+    ├── console.php                      # Console commands configuration
+    └── web.php                          # Web routes & AJAX endpoints
 
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## Setup & Installation Guide
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Follow these steps to set up and run the web application locally.
 
-## Code of Conduct
+### Prerequisites
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* **PHP:** `^8.3`
+* **Composer:** `^2.x`
+* **Node.js & NPM:** `^18.x` or `^20.x`
+* **MySQL Database Server**
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Step-by-Step Setup
+
+1. **Clone & Navigate to the Repository**
+   ```bash
+   git clone https://github.com/ErnestKekeke/laravel.git
+   cd task_manager
+   ```
+
+2. **Install PHP Dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install Frontend Dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Environment Configuration**
+   Duplicate `.env.example` to create your `.env` configuration file:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Generate a new application encryption key:
+   ```bash
+   php artisan key:generate
+   ```
+
+5. **Database Configuration**
+   Ensure your local MySQL server is running, create a database named `task_manager`, and configure your `.env` settings accordingly:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=task_manager
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+
+6. **Run Database Migrations**
+   Execute database migrations to set up the necessary tables:
+   ```bash
+   php artisan migrate
+   ```
+
+7. **Compile Frontend Assets**
+   * **Development Mode (with Hot Module Replacement):**
+     ```bash
+     npm run dev
+     ```
+   * **Production Build:**
+     ```bash
+     npm run build
+     ```
+
+8. **Serve the Application**
+   Launch Laravel's development server:
+   ```bash
+   php artisan serve
+   ```
+   Open your browser and navigate to `http://127.0.0.1:8000`.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced under the [MIT License](LICENSE).
+
+---
+
+## Author
+
+**Ernest Kekeke**  
+*Senior Full-Stack Developer / DevOps Engineer*
