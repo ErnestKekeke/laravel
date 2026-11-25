@@ -43,7 +43,7 @@ class CheckController extends Controller
     }
 
     public static function reg_no($input): mixed{
-        $regx_reg_no = "/^(?:\d{6,12}|(?:[A-Za-z]{1,6}[\/-]?)+\d{2,4}[\/-]?\d{4,6}(?:[\/-]?[A-Za-z]{1,4})?)$/";
+        $regx_reg_no = "/^(?:\d{6,12}|[A-Za-z]{1,6}[\/-]?\d{2,4}[\/-]?\d{3,6}(?:[\/-]?[A-Za-z]{1,4})?)$/";
         $test = preg_match($regx_reg_no, $input);
         return $test? $input : null;
     }

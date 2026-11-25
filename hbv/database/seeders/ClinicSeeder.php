@@ -15,7 +15,7 @@ class ClinicSeeder extends Seeder
     {
         $clinics = [
             [
-                'clinic_id' => 'ABCD',
+                'clinic_id' => '1000',
                 'clinic_name' => 'Lagos General Hospital',
                 'clinic_type' => 'general',
                 'reg_no' => 'LGH-2020-001',
@@ -31,7 +31,7 @@ class ClinicSeeder extends Seeder
                 'password' => Hash::make('password123'),
             ],
             [
-                'clinic_id' => 'EFGH',
+                'clinic_id' => '2000',
                 'clinic_name' => 'Abuja Medical Center',
                 'clinic_type' => 'specialty',
                 'reg_no' => 'AMC-2019-045',
@@ -47,7 +47,7 @@ class ClinicSeeder extends Seeder
                 'password' => Hash::make('password123'),
             ],
             [
-                'clinic_id' => 'IJKL',
+                'clinic_id' => '3000',
                 'clinic_name' => 'Kano Infectious Disease Clinic',
                 'clinic_type' => 'specialty',
                 'reg_no' => 'KIDC-2021-012',
@@ -63,7 +63,7 @@ class ClinicSeeder extends Seeder
                 'password' => Hash::make('password123'),
             ],
             [
-                'clinic_id' => 'MNOP',
+                'clinic_id' => '4000',
                 'clinic_name' => 'Accra Health Clinic',
                 'clinic_type' => 'community',
                 'reg_no' => 'AHC-2022-089',
@@ -79,7 +79,7 @@ class ClinicSeeder extends Seeder
                 'password' => Hash::make('password123'),
             ],
             [
-                'clinic_id' => 'QRST',
+                'clinic_id' => '5000',
                 'clinic_name' => 'Nairobi Central Clinic',
                 'clinic_type' => 'general',
                 'reg_no' => 'NCC-2020-156',

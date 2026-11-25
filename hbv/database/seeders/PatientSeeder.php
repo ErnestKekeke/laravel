@@ -15,8 +15,8 @@ class PatientSeeder extends Seeder
         $patients = [
             // Patients for Lagos General Hospital (ABCD)
             [
-                'clinic_id' => 'ABCD',
-                'patient_id' => 'ABCD-2025-0001',
+                'clinic_id' => '1000',
+                'patient_id' => '1000-2025-0001',
                 'first_name' => 'Chukwuma',
                 'last_name' => 'Okafor',
                 'middle_name' => 'Emmanuel',
@@ -48,8 +48,8 @@ class PatientSeeder extends Seeder
                 'treatment_notes' => 'Patient started on antiviral therapy. Monitor liver function monthly.',
             ],
             [
-                'clinic_id' => 'ABCD',
-                'patient_id' => 'ABCD-2025-0002',
+                'clinic_id' => '1000',
+                'patient_id' => '1000-2025-0002',
                 'first_name' => 'Amina',
                 'last_name' => 'Bello',
                 'middle_name' => 'Fatima',
@@ -81,8 +81,8 @@ class PatientSeeder extends Seeder
                 'treatment_notes' => 'Annual checkup recommended.',
             ],
             [
-                'clinic_id' => 'ABCD',
-                'patient_id' => 'ABCD-2025-0003',
+                'clinic_id' => '1000',
+                'patient_id' => '1000-2025-0003',
                 'first_name' => 'Oluwaseun',
                 'last_name' => 'Adeyemi',
                 'middle_name' => 'Grace',
@@ -116,8 +116,8 @@ class PatientSeeder extends Seeder
 
             // Patients for Abuja Medical Center (EFGH)
             [
-                'clinic_id' => 'EFGH',
-                'patient_id' => 'EFGH-2025-0001',
+                'clinic_id' => '2000',
+                'patient_id' => '2000-2025-0001',
                 'first_name' => 'Mohammed',
                 'last_name' => 'Ibrahim',
                 'middle_name' => 'Yusuf',
@@ -149,8 +149,8 @@ class PatientSeeder extends Seeder
                 'treatment_notes' => 'Counseling on treatment adherence scheduled. Treatment to begin next visit.',
             ],
             [
-                'clinic_id' => 'EFGH',
-                'patient_id' => 'EFGH-2025-0002',
+                'clinic_id' => '2000',
+                'patient_id' => '2000-2025-0002',
                 'first_name' => 'Elizabeth',
                 'last_name' => 'Obi',
                 'middle_name' => 'Chioma',
@@ -184,8 +184,8 @@ class PatientSeeder extends Seeder
 
             // Patients for Kano Infectious Disease Clinic (IJKL)
             [
-                'clinic_id' => 'IJKL',
-                'patient_id' => 'IJKL-2025-0001',
+                'clinic_id' => '3000',
+                'patient_id' => '3000-2025-0001',
                 'first_name' => 'Abubakar',
                 'last_name' => 'Sani',
                 'middle_name' => 'Ahmad',
@@ -219,8 +219,8 @@ class PatientSeeder extends Seeder
 
             // Patients for Accra Health Clinic (MNOP)
             [
-                'clinic_id' => 'MNOP',
-                'patient_id' => 'MNOP-2025-0001',
+                'clinic_id' => '4000',
+                'patient_id' => '4000-2025-0001',
                 'first_name' => 'Kwame',
                 'last_name' => 'Asante',
                 'middle_name' => 'Kofi',
@@ -254,8 +254,8 @@ class PatientSeeder extends Seeder
 
             // Patients for Nairobi Central Clinic (QRST)
             [
-                'clinic_id' => 'QRST',
-                'patient_id' => 'QRST-2025-0001',
+                'clinic_id' => '5000',
+                'patient_id' => '5000-2025-0001',
                 'first_name' => 'Grace',
                 'last_name' => 'Wanjiku',
                 'middle_name' => 'Mumbi',
@@ -287,8 +287,8 @@ class PatientSeeder extends Seeder
                 'treatment_notes' => 'Patient educated on treatment importance. Good adherence expected.',
             ],
             [
-                'clinic_id' => 'QRST',
-                'patient_id' => 'QRST-2025-0002',
+                'clinic_id' => '5000',
+                'patient_id' => '5000-2025-0002',
                 'first_name' => 'David',
                 'last_name' => 'Omondi',
                 'middle_name' => 'Otieno',
